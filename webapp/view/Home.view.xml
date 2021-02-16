@@ -1,0 +1,71 @@
+<mvc:View
+	controllerName="sap.ui.demo.basicTemplate.controller.Home"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc">
+    <Page
+		id="page"
+		title="{i18n>title}">
+        <Panel>
+            <content>
+                <List
+					headerText="{i18n>products}"
+					class="sapUiResponsiveMargin"
+					width="auto"
+					growing="true"
+					growingThreshold="4"
+					growingScrollToLoad="false"
+					items="{/Products}" >
+                    <items>
+                        <ObjectListItem
+								title="{ProductName}"
+								number="{
+										path: 'UnitsInStock'
+										}"
+								numberUnit="{view>/currency}"
+								press=".onItemSelected"
+		    					type="Active"
+						/>
+                    </items>
+                </List>
+            </content>
+        </Panel>
+        <Panel id="productDetailsPanel" headerText="{i18n>panel4HeaderText}" class="sapUiResponsiveMargin" width="auto">
+            <l:Grid defaultSpan="L3 M6 S12" containerQuery="true">
+                <Label text="{i18n>ProductID}:" />
+                <Input id="productId" value="{ProductID}" />
+                <Label text="{i18n>ProductName}:" />
+                <Input id="productName" value="{ProductName}" />
+                <Label text="{i18n>QuantityPerUnit}:" />
+                <Input id="quantityPerUnit" value="{QuantityPerUnit}" />
+                <Label text="{i18n>UnitPrice}:" />
+                <Input id="unitPrice" value="{UnitPrice}" />
+                <Label text="{i18n>UnitsInStock}:" />
+                <Input id="unitInStock" value="{UnitsInStock}" />
+                <Label text="{i18n>Discontinued}:" />
+                <CheckBox selected="{Discontinued}" />
+            </l:Grid>
+			<l:Grid><Button text="Update" press="onUpdate"/></l:Grid>
+			<l:Grid><Button text="Copy" press="onCopy"/></l:Grid>
+        </Panel>
+		<Panel id="productCopyPanel" headerText="{i18n>panel4CopyHeaderText}" class="sapUiResponsiveMargin" width="auto">
+            <l:Grid defaultSpan="L3 M6 S12" containerQuery="true">
+                <Label text="{i18n>ProductID}:" />
+                <Input id="productId1" value="{ProductID}" />
+                <Label text="{i18n>ProductName}:" />
+                <Input id="productName1" value="{ProductName}" />
+                <Label text="{i18n>QuantityPerUnit}:" />
+                <Input value="{QuantityPerUnit}" />
+                <Label text="{i18n>UnitPrice}:" />
+                <Input value="{UnitPrice}" />
+                <Label text="{i18n>UnitsInStock}:" />
+                <Input value="{UnitsInStock}" />
+                <Label text="{i18n>Discontinued}:" />
+                <CheckBox selected="{Discontinued}" />
+            </l:Grid>
+			<l:Grid><Button text="Save" press="onSave"/></l:Grid>
+			
+        </Panel>
+    </Page>
+</mvc:View>
